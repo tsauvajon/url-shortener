@@ -19,10 +19,13 @@ function decode(str) {
   let s = str.concat();
   while (s) {
     const index = alphabet.indexOf(s[0]);
-    decoded += index * (base ** (s.length - 1));
+    const power = s.length - 1;
+    // decoded += index * (base ** (s.length - 1));
+    decoded += index * (Math.pow(base, power));
     s = s.substring(1);
   }
   return decoded;
 }
 
-export { encode, decode };
+module.exports.encode = encode;
+module.exports.decode = decode;
